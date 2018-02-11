@@ -1074,6 +1074,154 @@ curl "http://www.example.com/loft/segment/2"
 
 
 
+
+
+#Broadcast
+
+## Get a broadcast
+
+```shell
+curl "http://www.example.com/loft/broadcast/<id>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+  {
+    "id": 1,
+    "title": "Fresh Fruit #22 with Special Guest Father Figure and The Frosch Prince",
+    "description": "The Frosch Prince returns for your 4 weekly dose of post punk, punk,
+    rock, neo folk and pretty much anything else with six strings and a mic.",
+    "segments": [
+      {
+        "title": "undefined",
+        "media": {
+          "mixcloud": "http://mixcloud.com/2352358",
+          "mp4": "http://s3/2352358.mp4"
+        }  
+      }
+    ],
+    "broadcasts": [
+      {
+        "start_time":"2012-04-23T18:25:43.511Z",
+       "end_time":"2012-04-23T20:25:43.511Z",
+       "location":"Cashmere Loft",
+       "original_broadcast":true
+      },
+      {
+        "start_time":"2012-04-23T18:25:43.511Z",
+       "end_time":"2012-04-23T20:25:43.511Z",
+       "original_broadcast":false
+      }
+    ],
+    "meta": {
+      "hosts":"The Frosch Prince"
+    }
+  }
+
+```
+
+This endpoint gets a specific broadcast
+
+### HTTP Request
+
+`GET http://www.example.com/loft/post/<id>`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+include_broadcasts | false | If set to true, the result will include broadcasts.
+
+## Create a broadcast
+
+```shell
+curl -H "Content-Type: application/json" -X POST \
+-d '{"title":"Episode title","description":"Episode description","meta":{"mixcloud"}}' \
+http://www.example.com/loft/episode/
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+  {
+    "id": 1,
+    "title": "Media title",
+    "description": "Media description",
+
+  }
+
+```
+
+This endpoint creates a post.
+
+### HTTP Request
+
+`POST http://www.example.com/loft/post/`
+
+
+## Update a broadcast
+
+```shell
+curl -H "Content-Type: application/json" -X PUT \
+-d '{"title":"Episode title"}' http://www.example.com/loft/post/2
+```
+
+> The above command returns JSON structured like this:
+
+```json
+
+  {
+    "id": 2,
+    "title": "Episode title",
+    "description": "Episode description",
+
+  }
+
+```
+
+This endpoint updates a broadcast.
+
+### HTTP Request
+
+`PUT http://www.example.com/loft/post/<id>`
+
+
+## Delete a broadcast
+
+
+
+```shell
+curl "http://www.example.com/loft/post/2"
+  -X DELETE
+```
+
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "deleted" : true
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #Posts
 
 ## Get a post
