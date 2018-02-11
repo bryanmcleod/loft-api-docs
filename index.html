@@ -221,7 +221,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#episode" class="toc-h1 toc-link" data-title="episode">Episode</a>
+            <a href="#episodes" class="toc-h1 toc-link" data-title="episodes">Episodes</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-a-specific-episode" class="toc-h2 toc-link" data-title="get-a-specific-episode">Get a specific Episode</a>
@@ -238,10 +238,10 @@
               </ul>
           </li>
           <li>
-            <a href="#collection" class="toc-h1 toc-link" data-title="collection">Collection</a>
+            <a href="#collections" class="toc-h1 toc-link" data-title="collections">Collections</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-a-specific-collection" class="toc-h2 toc-link" data-title="get-a-specific-collection">Get a specific Collection</a>
+                    <a href="#get-a-collection" class="toc-h2 toc-link" data-title="get-a-collection">Get a collection</a>
                   </li>
                   <li>
                     <a href="#create-a-collection" class="toc-h2 toc-link" data-title="create-a-collection">Create a Collection</a>
@@ -378,9 +378,9 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>This is the API Docs for Loft, a RESTful API for radio content management.</p>
-<h1 id='episode'>Episode</h1>
+<h1 id='episodes'>Episodes</h1>
 <p>An episode represents one discrete block of radio content. It has one or more segments which contain atomic audio media items. An episode may have one or more broadcasts (dated future or in the past). It has a meta object which contains an unstructured json object of any episodic metadata, for example hosts, guests or links. An episode always belongs to at least one collection.</p>
-<h2 id='get-a-specific-episode'>Get a specific Episode</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/episode/&lt;id&gt;"</span>
+<h2 id='get-a-specific-episode'>Get a specific Episode</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/episodes/&lt;id&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -436,7 +436,7 @@
 </span></code></pre>
 <p>This endpoint gets a specific episode</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://www.example.com/loft/episode/&lt;id&gt;?include_broadcasts=true</code></p>
+<p><code>GET http://www.example.com/loft/episodes/&lt;id&gt;?include_broadcasts=true</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -453,7 +453,7 @@
 </tbody></table>
 <h2 id='create-an-episode'>Create an Episode</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X POST <span class="se">\</span>
 -d <span class="s1">'{"title":"Episode title","description":"Episode description","meta":{"mixcloud"}}'</span> <span class="se">\</span>
-http://www.example.com/loft/episode/
+http://www.example.com/loft/episodes/
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -469,9 +469,9 @@ http://www.example.com/loft/episode/
 </span></code></pre>
 <p>This endpoint creates an episode.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST http://www.example.com/loft/episode/</code></p>
+<p><code>POST http://www.example.com/loft/episodes/</code></p>
 <h2 id='update-an-episode'>Update an Episode</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X PUT <span class="se">\</span>
--d <span class="s1">'{"title":"Updated episode title"}'</span> http://www.example.com/loft/episode/2
+-d <span class="s1">'{"title":"Updated episode title"}'</span> http://www.example.com/loft/episodes/2
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -487,8 +487,8 @@ http://www.example.com/loft/episode/
 </span></code></pre>
 <p>This endpoint updates an episode.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>PATCH http://www.example.com/loft/episode/&lt;id&gt;</code></p>
-<h2 id='delete-a-specific-episode'>Delete a Specific Episode</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/episode/2"</span>
+<p><code>PATCH http://www.example.com/loft/episodes/&lt;id&gt;</code></p>
+<h2 id='delete-a-specific-episode'>Delete a Specific Episode</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/episodes/2"</span>
   -X DELETE
 </code></pre>
 <blockquote>
@@ -501,7 +501,7 @@ http://www.example.com/loft/episode/
 </span></code></pre>
 <p>This endpoint deletes an episode.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>DELETE http://www.example.com/loft/episode/&lt;ID&gt;</code></p>
+<p><code>DELETE http://www.example.com/loft/episodes/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -514,9 +514,9 @@ http://www.example.com/loft/episode/
 <td>The ID of the episode to delete</td>
 </tr>
 </tbody></table>
-<h1 id='collection'>Collection</h1>
+<h1 id='collections'>Collections</h1>
 <p>A collection is an ordered set of episodes. It may, for example, represent a playlist or a show&#39;s primary episode list. It always belongs to a container (A container could in turn be a show, or a special feature, ).</p>
-<h2 id='get-a-specific-collection'>Get a specific Collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/collection/&lt;id&gt;"</span>
+<h2 id='get-a-collection'>Get a collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/collections/&lt;id&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -532,10 +532,10 @@ http://www.example.com/loft/episode/
 </span></code></pre>
 <p>This endpoint gets a specific collection</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://www.example.com/loft/collection/&lt;id&gt;</code></p>
+<p><code>GET http://www.example.com/loft/collections/&lt;id&gt;</code></p>
 <h2 id='create-a-collection'>Create a Collection</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X POST <span class="se">\</span>
 -d <span class="s1">'{"name":"episodes","default_container_id":32}'</span> <span class="se">\</span>
-http://www.example.com/loft/collection/
+http://www.example.com/loft/collections/
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -552,10 +552,10 @@ http://www.example.com/loft/collection/
 </span></code></pre>
 <p>This endpoint creates a collection.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>POST http://www.example.com/loft/collection/</code></p>
+<p><code>POST http://www.example.com/loft/collections/</code></p>
 <h2 id='update-a-collection'>Update a collection</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X PATCH <span class="se">\</span>
 -d <span class="s1">'{"name":"Bryans fav"}'</span> <span class="se">\</span>
-http://www.example.com/loft/collection/2
+http://www.example.com/loft/collections/2
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -570,8 +570,8 @@ http://www.example.com/loft/collection/2
 </span></code></pre>
 <p>This endpoint updates a collection.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>PATCH http://www.example.com/loft/collection/2</code></p>
-<h2 id='delete-a-specific-collection'>Delete a Specific Collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/collection/2"</span>
+<p><code>PATCH http://www.example.com/loft/collections/2</code></p>
+<h2 id='delete-a-specific-collection'>Delete a Specific Collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/collections/2"</span>
   -X DELETE
 </code></pre>
 <blockquote>
@@ -584,7 +584,7 @@ http://www.example.com/loft/collection/2
 </span></code></pre>
 <p>This endpoint deletes a collection.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>DELETE http://www.example.com/loft/collection/&lt;ID&gt;</code></p>
+<p><code>DELETE http://www.example.com/loft/collections/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -597,7 +597,7 @@ http://www.example.com/loft/collection/2
 <td>The ID of the collection to delete</td>
 </tr>
 </tbody></table>
-<h2 id='add-episode-to-collection'>Add Episode to Collection</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X PUT -d <span class="s1">'{"id":2}'</span> http://www.example.com/loft/collection/2/episodes
+<h2 id='add-episode-to-collection'>Add Episode to Collection</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X PUT -d <span class="s1">'{"id":2}'</span> http://www.example.com/loft/collections/2/episodes
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -613,8 +613,8 @@ http://www.example.com/loft/collection/2
 </span></code></pre>
 <p>This endpoint adds an episode to a collection</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>PUT http://www.example.com/loft/collection/2/episodes</code></p>
-<h2 id='remove-episode-from-a-collection'>Remove Episode from a Collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/collection/2/episodes/3"</span>
+<p><code>PUT http://www.example.com/loft/collections/2/episodes</code></p>
+<h2 id='remove-episode-from-a-collection'>Remove Episode from a Collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/collections/2/episodes/3"</span>
   -X DELETE
 </code></pre>
 <blockquote>
@@ -627,7 +627,7 @@ http://www.example.com/loft/collection/2
 </span></code></pre>
 <p>This endpoint removes a listing of an episode in a collection</p>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>DELETE http://www.example.com/loft/collection/&lt;collection_id&gt;/episodes/&lt;episode_id&gt;</code></p>
+<p><code>DELETE http://www.example.com/loft/collections/&lt;collection_id&gt;/episodes/&lt;episode_id&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -646,7 +646,7 @@ http://www.example.com/loft/collection/2
 </tbody></table>
 <h1 id='container'>Container</h1>
 <p>A container is a grouping concept that contains collections of episodes, posts and child containers. It could, for example represent a show, or a news page, or even a home page.</p>
-<h2 id='get-a-specific-container'>Get a specific Container</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/collection/&lt;id&gt;"</span>
+<h2 id='get-a-specific-container'>Get a specific Container</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/containers/&lt;id&gt;"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -666,7 +666,7 @@ http://www.example.com/loft/collection/2
 </span></code></pre>
 <p>This endpoint gets a specific collection</p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><code>GET http://www.example.com/loft/collection/&lt;id&gt;?include_broadcasts=true</code></p>
+<p><code>GET http://www.example.com/loft/containers/&lt;id&gt;</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -692,8 +692,8 @@ http://www.example.com/loft/collection/2
 </tr>
 </tbody></table>
 <h2 id='create-a-container'>Create a Container</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X POST <span class="se">\</span>
--d <span class="s1">'{"name":"Fresh Fruit","type":"Show"}'</span> <span class="se">\</span>
-http://www.example.com/loft/collection/
+-d <span class="s1">'{"name":"Fresh Fruit","type":"show"}'</span> <span class="se">\</span>
+http://www.example.com/loft/containers/
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -709,10 +709,10 @@ http://www.example.com/loft/collection/
 </span></code></pre>
 <p>This endpoint creates a container.</p>
 <h3 id='http-request-12'>HTTP Request</h3>
-<p><code>POST http://www.example.com/loft/container/</code></p>
+<p><code>POST http://www.example.com/loft/containers/</code></p>
 <h2 id='update-a-container'>Update a container</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X PATCH <span class="se">\</span>
 -d <span class="s1">'{"name":"New Show Name"}'</span> <span class="se">\</span>
-http://www.example.com/loft/container/1
+http://www.example.com/loft/containers/1
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -721,14 +721,14 @@ http://www.example.com/loft/container/1
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Show Name"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Show"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"show"</span><span class="w">
 
   </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p>This endpoint updates a container.</p>
 <h3 id='http-request-13'>HTTP Request</h3>
-<p><code>PATCH http://www.example.com/loft/container/1</code></p>
+<p><code>PATCH http://www.example.com/loft/containers/1</code></p>
 <h2 id='delete-a-specific-container'>Delete a Specific Container</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/container/1"</span>
   -X DELETE
 </code></pre>
@@ -938,7 +938,7 @@ http://www.example.com/loft/people/
 -d <span class="s1">'{  "url": "http://s3.com/a.mp4",\
   "type":"audio",\
   "format": "MPEG-4"}'</span> <span class="se">\</span>
-http://www.example.com/loft/episode/
+http://www.example.com/loft/media/
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
