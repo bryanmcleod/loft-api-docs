@@ -341,6 +341,23 @@
               </ul>
           </li>
           <li>
+            <a href="#broadcast" class="toc-h1 toc-link" data-title="broadcast">Broadcast</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-broadcast" class="toc-h2 toc-link" data-title="get-a-broadcast">Get a broadcast</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-broadcast" class="toc-h2 toc-link" data-title="create-a-broadcast">Create a broadcast</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-broadcast" class="toc-h2 toc-link" data-title="update-a-broadcast">Update a broadcast</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-broadcast" class="toc-h2 toc-link" data-title="delete-a-broadcast">Delete a broadcast</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#posts" class="toc-h1 toc-link" data-title="posts">Posts</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1205,6 +1222,109 @@ http://www.example.com/loft/episode/
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='broadcast'>Broadcast</h1><h2 id='get-a-broadcast'>Get a broadcast</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/broadcast/&lt;id&gt;"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fresh Fruit #22 with Special Guest Father Figure and The Frosch Prince"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Frosch Prince returns for your 4 weekly dose of post punk, punk,
+    rock, neo folk and pretty much anything else with six strings and a mic."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"segments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"mixcloud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://mixcloud.com/2352358"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"mp4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s3/2352358.mp4"</span><span class="w">
+        </span><span class="p">}</span><span class="w">  
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"broadcasts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"start_time"</span><span class="p">:</span><span class="s2">"2012-04-23T18:25:43.511Z"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"end_time"</span><span class="p">:</span><span class="s2">"2012-04-23T20:25:43.511Z"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"location"</span><span class="p">:</span><span class="s2">"Cashmere Loft"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"original_broadcast"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"start_time"</span><span class="p">:</span><span class="s2">"2012-04-23T18:25:43.511Z"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"end_time"</span><span class="p">:</span><span class="s2">"2012-04-23T20:25:43.511Z"</span><span class="p">,</span><span class="w">
+       </span><span class="s2">"original_broadcast"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"hosts"</span><span class="p">:</span><span class="s2">"The Frosch Prince"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint gets a specific broadcast</p>
+<h3 id='http-request-30'>HTTP Request</h3>
+<p><code>GET http://www.example.com/loft/post/&lt;id&gt;</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>include_broadcasts</td>
+<td>false</td>
+<td>If set to true, the result will include broadcasts.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-broadcast'>Create a broadcast</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X POST <span class="se">\</span>
+-d <span class="s1">'{"title":"Episode title","description":"Episode description","meta":{"mixcloud"}}'</span> <span class="se">\</span>
+http://www.example.com/loft/episode/
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Media title"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Media description"</span><span class="p">,</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint creates a post.</p>
+<h3 id='http-request-31'>HTTP Request</h3>
+<p><code>POST http://www.example.com/loft/post/</code></p>
+<h2 id='update-a-broadcast'>Update a broadcast</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X PUT <span class="se">\</span>
+-d <span class="s1">'{"title":"Episode title"}'</span> http://www.example.com/loft/post/2
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Episode title"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Episode description"</span><span class="p">,</span><span class="w">
+
+  </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint updates a broadcast.</p>
+<h3 id='http-request-32'>HTTP Request</h3>
+<p><code>PUT http://www.example.com/loft/post/&lt;id&gt;</code></p>
+<h2 id='delete-a-broadcast'>Delete a broadcast</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/post/2"</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='posts'>Posts</h1><h2 id='get-a-post'>Get a post</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/post/&lt;id&gt;"</span>
 </code></pre>
 <blockquote>
@@ -1245,9 +1365,9 @@ http://www.example.com/loft/episode/
 
 </span></code></pre>
 <p>This endpoint gets a specific segment</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>GET http://www.example.com/loft/post/&lt;id&gt;</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1278,7 +1398,7 @@ http://www.example.com/loft/episode/
 
 </span></code></pre>
 <p>This endpoint creates a post.</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>POST http://www.example.com/loft/post/</code></p>
 <h2 id='update-a-post'>Update a post</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -X PUT <span class="se">\</span>
 -d <span class="s1">'{"title":"Episode title"}'</span> http://www.example.com/loft/post/2
@@ -1296,7 +1416,7 @@ http://www.example.com/loft/episode/
 
 </span></code></pre>
 <p>This endpoint updates a post.</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>PUT http://www.example.com/loft/post/&lt;id&gt;</code></p>
 <h2 id='delete-a-post'>Delete a post</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://www.example.com/loft/post/2"</span>
   -X DELETE
